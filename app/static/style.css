@@ -1,0 +1,48 @@
+/* https://www.color-hex.com/color-palette/1407 */
+:root {
+  --main-bg-color: #36454f;
+  --main-cd-color: #708090;
+}
+
+html, body {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  display: table;
+}
+
+body {
+  display: table-cell;
+  vertical-align: middle;
+  background-color: var(--main-bg-color);
+  color: white;
+}
+
+h1 {
+  font-weight: normal;
+  margin: 0;
+}
+
+.content-section {
+  display: block;
+  text-align: center;
+  font-family: "Roboto", Arial;
+}
+
+.content-section form fieldset {
+  background-color: var(--main-cd-color);
+  box-shadow: 0 0 20px 1px rgba(0, 0, 0, .2);
+  border-radius: 3px;
+  border: 0;
+}
+
+.content-section form {
+  width: 500px;
+  margin: auto;
+  text-align: center;
+}
+
+.content-section form div:nth-child(n+2) {
+  margin-top: 10px;
+}

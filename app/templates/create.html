@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="utf-8">
+  <title>Create Attendance</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+  {%block content%}
+  <div class="content-section">
+    <form action="" method="POST">
+      {{f.hidden_tag()}}
+      <fieldset class=" create-form">
+        <div>
+          <h1>Create Attendance</h1>
+        </div>
+        <div>
+          {{f.entrydate.label(class="form-control-label")}}
+          {{f.entrydate(class="form-control")}}
+        </div>
+        <div>
+          {{f.submit(class="btn")}}
+        </div>
+      </fieldset>
+    </form>
+  </div>
+  {%endblock content%}
+</body>
+
+</html>
