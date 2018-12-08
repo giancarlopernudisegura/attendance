@@ -8,6 +8,15 @@
 </head>
 
 <body>
+  {%with messages = get_flashed_messages(with_categories=true)%}
+  {%if messages%}
+  {%for category, messge in messages%}
+  <div class="alert alert-{{category}}">
+    {{messge}}
+  </div>
+  {%endfor%}
+  {%endif%}
+  {%endwith%}
   {%block content%}
   <div class="content-section">
     <form action="" method="POST">

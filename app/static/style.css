@@ -10,6 +10,7 @@ html, body {
   margin: 0;
   padding: 0;
   display: table;
+  font-family: "Roboto", Arial;
 }
 
 body {
@@ -27,7 +28,6 @@ h1 {
 .content-section {
   display: block;
   text-align: center;
-  font-family: "Roboto", Arial;
 }
 
 .content-section form fieldset {
