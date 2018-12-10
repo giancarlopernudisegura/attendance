@@ -7,4 +7,4 @@ class Meeting(db.Model):
     people = db.Column(db.Text)
 
     def __repr__(self):
-        return "Meeting('{}')".format(self.date)
+        return "Meeting('{}, {}')".format(self.date, self.people)

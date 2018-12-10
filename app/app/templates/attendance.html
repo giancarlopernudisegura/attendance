@@ -20,19 +20,21 @@
   {%endwith%}
   {%block content%}
   <div class="content-section">
-    <form action="" method="POST">
+    <form action="/send" method="POST">
       <fieldset class=" create-form">
         <div>
           <h1>Take Attendance for {{m.date}}</h1>
         </div>
-        <table>
-          {%for member in members%}
-          <tr>
-            <td>{{member}}</td>
-            <td><input type="checkbox" name="name1" value="here"></td>
-          </tr>
-          {%endfor%}
-        </table>
+        <form class="" action="/send" method="POST">
+          <table>
+            {%for member in members%}
+            <tr>
+              <td>{{member}}</td>
+              <td><input type="checkbox" name="{{member}}" value="{{member}}"></td>
+            </tr>
+            {%endfor%}
+          </table>
+        </form>
         <input type="submit" name="submit" value="submit">
       </fieldset>
     </form>
