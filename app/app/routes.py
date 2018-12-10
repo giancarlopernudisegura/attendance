@@ -6,7 +6,7 @@ from app.models import Meeting
 
 # dummy data
 members = ["Giancarlo Pernudi", "Donald Trump",
-           "Justin Trudeau", "Vladimir Putin", "Winston Churchill", "Chuck Norris", "Michael Bay", "Elon Musk"]
+           "Justin Trudeau", "Vladimir Putin", "Winston Churchill", "Chuck Norris", "Michael Bay", "Elon Musk", "Terry Crews"]
 
 # CHANGE IN FINAL
 # db.drop_all()
