@@ -1,7 +1,8 @@
-/* https://www.color-hex.com/color-palette/1407 */
+/* https://www.color-hex.com/color-palette/68961 */
+/* made by Giancarlo Pernudi */
 :root {
-  --main-bg-color: #36454f;
-  --main-cd-color: #708090;
+  --main-bg-color: #2e3742;
+  --main-cd-color: #465b6f;
 }
 
 html, body {
@@ -25,6 +26,24 @@ h1 {
   margin: 0;
 }
 
+table {
+  width: 100%;
+  background-color: black;
+  border-collapse: collapse;
+}
+
+table tr:nth-child(even) {
+  background-color: rgba(255, 255, 255, 0.05);
+}
+
+table td {
+  align: center;
+}
+
+.alert {
+  background-color: rgba(0, 255, 0, 0.5)
+}
+
 .content-section {
   display: block;
   text-align: center;
@@ -38,7 +57,7 @@ h1 {
 }
 
 .content-section form {
-  width: 500px;
+  width: 650px;
   margin: auto;
   text-align: center;
 }

@@ -1,9 +1,10 @@
+<!-- made by Giancarlo Pernudi -->
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
 
 <head>
   <meta charset="utf-8">
-  <title>Create Attendance</title>
+  <title>Take Attendance</title>
   <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 
@@ -11,27 +12,28 @@
   {%with messages = get_flashed_messages(with_categories=true)%}
   {%if messages%}
   {%for category, messge in messages%}
-  <div class="alert alert-{{category}}">
+  <!-- <div class="alert alert-{{category}}">
     {{messge}}
-  </div>
+  </div> -->
   {%endfor%}
   {%endif%}
   {%endwith%}
   {%block content%}
   <div class="content-section">
     <form action="" method="POST">
-      {{f.hidden_tag()}}
       <fieldset class=" create-form">
         <div>
-          <h1>Create Attendance</h1>
+          <h1>Take Attendance for {{m.date}}</h1>
         </div>
-        <div>
-          {{f.entrydate.label(class="form-control-label")}}
-          {{f.entrydate(class="form-control")}}
-        </div>
-        <div>
-          {{f.submit(class="btn")}}
-        </div>
+        <table>
+          {%for member in members%}
+          <tr>
+            <td>{{member}}</td>
+            <td><input type="checkbox" name="name1" value="here"></td>
+          </tr>
+          {%endfor%}
+        </table>
+        <input type="submit" name="submit" value="submit">
       </fieldset>
     </form>
   </div>
