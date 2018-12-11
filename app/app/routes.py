@@ -45,4 +45,4 @@ def send():
     m.people = sqlList
     db.session.commit()
     print(Meeting.query.all())
-    return "<h1>SUBMITTED " + str(Meeting.query.all()[len(Meeting.query.all()) - 1].date) + "</h1>"
+    return "<h1>SUBMITTED " + str(Meeting.query.all()[len(Meeting.query.all()) - 1].date) + "</h1><a href='/create'>Make New Attendance Sheet</a>"

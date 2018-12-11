@@ -2,7 +2,18 @@
 /* made by Giancarlo Pernudi */
 :root {
   --main-bg-color: #2e3742;
-  --main-cd-color: #465b6f;
+  --main-cd-color: #3e4760;
+}
+
+::-moz-selection {
+  /* Code for Firefox */
+  color: black;
+  background: white;
+}
+
+::selection {
+  color: black;
+  background: white;
 }
 
 html, body {
@@ -30,14 +41,21 @@ table {
   width: 100%;
   background-color: black;
   border-collapse: collapse;
+  border-radius: 3px;
 }
 
 table tr:nth-child(even) {
-  background-color: rgba(255, 255, 255, 0.05);
+  background-color: rgba(255, 255, 255, 0.09);
 }
 
-table td {
-  align: center;
+table tr td {
+  width: 96%;
+  height: 25px;
+  padding: 0;
+}
+
+table tr .cb {
+  width: 25px;
 }
 
 .alert {
@@ -64,4 +82,61 @@ table td {
 
 .content-section form div:nth-child(n+2) {
   margin-top: 10px;
+}
+
+.checkbox {
+  position: relative;
+  cursor: pointer;
+  width: 15px;
+  height: 15px;
+  top: 0;
+  -webkit-appearance: none;
+  outline: none;
+  transition: .3s;
+}
+
+.checkbox:before {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 2px;
+  width: 100%;
+  height: 100%;
+  background-color: black;
+  border: 2px solid white;
+  border-radius: 4px;
+  transition: .3s;
+}
+
+.checkbox:hover:before {
+  content: '';
+  background-color: rgba(40, 40, 40, 1)
+}
+
+.checkbox:checked:before {
+  content: '';
+  background-color: white;
+}
+
+.submit {
+  font-family: "Roboto", Arial;
+  margin-top: 10px;
+  border-radius: 3px;
+  border: none;
+  padding: 3px 9px;
+  text-decoration: none;
+  display: inline-block;
+  background-color: rgba(20, 20, 20, 1);
+  box-shadow: 0 0 20px 1px rgba(0, 0, 0, .2);
+  color: white;
+  outline: none;
+  cursor: pointer;
+}
+
+.submit:hover {
+  background-color: rgba(35, 35, 35, 1);
+}
+
+.submit:active {
+  background-color: rgba(5, 5, 5, 1);
 }
