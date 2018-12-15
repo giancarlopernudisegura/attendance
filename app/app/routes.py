@@ -1,12 +1,13 @@
 # made by Giancarlo Pernudi
 from flask import render_template, url_for, flash, redirect, request
 from app import app, db
+from datetime import date
 from app.forms import CreateAttendance
 from app.models import Meeting
+from app.sheets import *
 
-# dummy data
-members = ["Giancarlo Pernudi", "Donald Trump",
-           "Justin Trudeau", "Vladimir Putin", "Winston Churchill", "Chuck Norris", "Michael Bay", "Elon Musk", "Terry Crews"]
+# member data
+members = members()
 
 # CHANGE IN FINAL
 # db.drop_all()
@@ -19,30 +20,28 @@ def create():
     form = CreateAttendance()
     if (form.validate_on_submit()):
         meeting = Meeting(date=form.entrydate.data)
-        db.session.add(meeting)
-        db.session.commit()
-        flash('sign in sheet created for {}'.format(
-            form.entrydate.data), 'success')
-        return redirect(url_for('attendance'))
+        if (len(Meeting.query.filter_by(date=meeting.date).all()) == 0):
+            db.session.add(meeting)
+            db.session.commit()
+            flash('sign in sheet created for {}'.format(
+                form.entrydate.data), 'success')
+        return redirect(url_for('attendance', fdate=str(meeting.date)))
     return render_template('create.html', f=form)
 
 
-@app.route("/attendance", methods=['GET', 'POST'])
-def attendance():
-    index = len(Meeting.query.all()) - 1
-    print("> " + str(Meeting.query.all()[index].date))
-    return render_template('attendance.html', members=members, m=Meeting.query.all()[index])
+@app.route("/attendance/<fdate>", methods=['GET', 'POST'])
+def attendance(fdate):
+    return render_template('attendance.html', members=members, m=Meeting.query.filter_by(date=fdate).first())
 
 
-@app.route("/send", methods=['POST'])
-def send():
+@app.route("/send/<fdate>", methods=['POST'])
+def send(fdate):
     list = []
     for m in members:
         if (request.form.get(m)):
             list.append(str(request.form.get(m)))
     sqlList = ','.join(list)
-    m = Meeting.query.all()[len(Meeting.query.all()) - 1]
+    m = Meeting.query.filter_by(date=fdate).first()
     m.people = sqlList
     db.session.commit()
-    print(Meeting.query.all())
-    return "<h1>SUBMITTED " + str(Meeting.query.all()[len(Meeting.query.all()) - 1].date) + "</h1><a href='/create'>Make New Attendance Sheet</a>"
+    return "<h1>SUBMITTED " + str(Meeting.query.filter_by(date=fdate).first().date) + "</h1><a href='/create'>Make New Attendance Sheet</a>"

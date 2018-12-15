@@ -5,7 +5,8 @@
 <head>
   <meta charset="utf-8">
   <title>Take Attendance</title>
-  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+  <link rel="stylesheet" href="{{url_for('static', filename='style.css')}}">
+  <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
 </head>
 
 <body>
@@ -20,26 +21,44 @@
   {%endwith%}
   {%block content%}
   <div class="content-section">
-    <form action="/send" method="POST">
+    <!-- {{m.date}} -->
+    <form action="{{url_for('send', fdate=m.date)}}" method="POST">
       <fieldset class=" create-form">
         <div>
           <h1 style="margin-bottom:5px;">Take Attendance for {{m.date}}</h1>
         </div>
-        <form class="" action="/send" method="POST">
-          <table>
-            {%for member in members%}
-            <tr>
-              <td>{{member}}</td>
-              <td class="cb"><input class="checkbox" type="checkbox" name="{{member}}" value="{{member}}"></td>
-            </tr>
-            {%endfor%}
-          </table>
-        </form>
+        <table>
+          {%for member in members%}
+          <tr>
+            <td>{{member}}</td>
+            <td class="cb"><input class="checkbox" id="{{member}}" type="checkbox" name="{{member}}" value="{{member}}"></td>
+          </tr>
+          {%endfor%}
+        </table>
         <input type="submit" class="submit" name="submit" value="submit">
       </fieldset>
     </form>
   </div>
-  {%endblock content%}
 </body>
+<script type="text/javascript">
+  var listM = [];
+</script>
+{%for member in members%}
+<script type="text/javascript">
+  listM.push("{{member}}");
+</script>
+{%endfor%}
+<script type="text/javascript">
+  var listP = "{{m.people}}".split(",");
+  // console.log(listP);
+  // console.log(listM);
+  for (l in listP) {
+    // console.log(listP[l]);
+    if (jQuery.inArray(listP[l], listM) >= 0) {
+      document.getElementById(listP[l]).checked = true;
+    }
+  }
+</script>
+{%endblock content%}
 
 </html>

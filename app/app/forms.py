@@ -1,6 +1,7 @@
 # made by Giancarlo Pernudi
 from flask_wtf import FlaskForm
-from wtforms import DateField, SubmitField
+from wtforms import SubmitField
+from wtforms.fields.html5 import DateField
 from wtforms.validators import DataRequired
 
 
